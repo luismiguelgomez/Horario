@@ -1,5 +1,6 @@
 package unbosque.edu.co.vista;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -15,23 +16,17 @@ public class Tabla implements ActionListener{
 	public JFrame ventana;
 	private JTable tabla;
 	private String [] cabecera = {"", "LUNES", "MARTES", "MIERCOLES", "JUEVES" , "VIERNES", "SABADO"};
-	private String [][] datos = 
-		{{"7AM", "", "", "", "" , "", " "},
-		{"9AM", "", "", "", "" , "", " "},
-		{"11AM", "", "", "", "" , "", " "},
-		{"1PM", "", "", "", "" , "", " "},
-		{"3PM", "", "", "", "" , "", " "},
-		{"5PM", "", "", "", "" , "", " "},
-		{"7PM", "", "", "", "" , "", " "},};
+	private String [][] datosTabla;
 	
 	JButton botonAgregar;
 	JButton botonBorrar;
 	
 	
-	public Tabla() {
+	public Tabla(String [][] datos) {
+		datosTabla = datos;
 		ventana = new JFrame("Tablas");
 		ventana.setLayout(new FlowLayout());
-		ventana.setSize(700, 250);
+		ventana.setSize(750, 250);
 		ventana.setLocationRelativeTo(null);
 		set_Tabla();
 		botonsAceptarCancelar();
@@ -42,9 +37,9 @@ public class Tabla implements ActionListener{
 	}
 	
 	public void set_Tabla() {
-		tabla = new JTable(datos, cabecera);
+		tabla = new JTable(datosTabla, cabecera);
 		JScrollPane JS = new JScrollPane(tabla);
-		JS.setPreferredSize(new Dimension(600,135));
+		JS.setPreferredSize(new Dimension(620,135));
 		ventana.add(JS);
 	}
 	
@@ -60,11 +55,16 @@ public class Tabla implements ActionListener{
 		botonBorrar.setText("Borrar Asignatura");
 		botonBorrar.addActionListener(this);
 	}
+	
+	private void pintarColor(String [][] lugarPintar) {
+		
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		if (ev.getSource() == botonAgregar) {
-			VentanaAgregarAsignatura ventanaAgregarAsignatura = new VentanaAgregarAsignatura();
+			VentanaAgregarAsignatura ventanaAgregarAsignatura = new VentanaAgregarAsignatura(datosTabla);
+			ventana.setVisible(false);
 		}
 		if (ev.getSource() == botonBorrar) {
 			VentanaEliminarAsignatura ventanaEliminarAsignatura = new VentanaEliminarAsignatura();

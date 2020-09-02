@@ -3,12 +3,15 @@
  */
 package unbosque.edu.co.vista;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout; 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.font.TextLayout;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,6 +26,7 @@ import javax.swing.JTextArea;
  */
 public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 	
+	private String [] mostrarMaterias;
 	JButton botonCancelar;
 	JButton btnEliminarAsignatura;
 	private JComboBox combo;
@@ -67,7 +71,11 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		this.getContentPane().add(panel);
 	}
 	
-	
+	public void recibeMateria (ArrayList<String> dmaterias) {
+		System.out.println("#################");
+		System.out.println(dmaterias);
+		setMostrarMaterias(mostrarMaterias);
+	}
 	
 	public void actionPerformed(ActionEvent e) {
         if (e.getSource()==botonCancelar) {
@@ -76,17 +84,22 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
     }
 	
 	private void menuEliminacion () {
-		mensaje = new JLabel();
+		System.out.println("---"+ " MATERIAS SON:" );
+        mensaje = new JLabel();
 		mensaje.setBounds(5, 40, 350, 20);
-		mensaje.setText("Seleccione la asignatura que desea eliminar");
-		
-		combo = new JComboBox<String>();
+		mensaje.setText("Seleccione la asignatura que desea eliminar" );
+		String [] horario = {"Seleccione","7AM","9AM","11AM","1PM","3PM","5PM","7PM","9PM"};
+		combo = new JComboBox(horario);
 		combo.setBounds(400, 40, 135, 20);
-		combo.addItem("uno");
-		combo.addItem("dos");
-		combo.addItem("tres");
 	}
 
-	
+	public String[] getMostrarMaterias() {
+		return mostrarMaterias;
+	}
+
+	public void setMostrarMaterias(String[] mostrarMaterias) {
+		this.mostrarMaterias = mostrarMaterias;
+	}
+
 	
 }

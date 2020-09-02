@@ -3,9 +3,11 @@
  */
 package unbosque.edu.co.vista;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -14,12 +16,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import unbosque.edu.co.modelo.RecibidorDatos;
+
+
 /**
  * @author gomez
  *
  */
 public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
-
+	
 	public JLabel mensaje;
 	public JLabel nprofesor;
 	public JLabel tColor;
@@ -27,7 +32,7 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	public JLabel tHorario;
 	public JComboBox<String> color;
 	JComboBox<String> menuHorario;
-	JTextField nombrecolor;
+	JTextField nombreAsignatura;
 	JTextField nombreProfesor;
 	JCheckBox LUNES;
 	JCheckBox MARTES;
@@ -37,11 +42,13 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	JCheckBox SABADO;
 	JButton aceptar;
 	JButton cancelar;
+	String [][] datosVentanaAsignatura;
 	
 	/**
 	 * 
 	 */
-	public VentanaAgregarAsignatura() {
+	public VentanaAgregarAsignatura(String [][] datos) {
+		datosVentanaAsignatura = datos;
 		setSize(600,500);
 		setTitle("Agregar color");
 		setLocationRelativeTo(null);
@@ -54,7 +61,7 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	
 		inicializarComponentes();
 		add (mensaje);
-		add (nombrecolor);
+		add (nombreAsignatura);
 		add (nprofesor);
 		add (nombreProfesor);
 		add (tColor);
@@ -75,6 +82,7 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	
 	private void inicializarComponentes () {
 		
+		
 		mensaje = new JLabel();
 		mensaje.setText("Nombre de la asignatura");
 		mensaje.setBounds(10, 0, 200, 100);
@@ -89,12 +97,12 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		tHorario.setBounds(10, 110, 150, 100);
 		
 		
-		nombrecolor = new JTextField(30);
-		nombrecolor.setBounds(350,30,200,25);
+		nombreAsignatura = new JTextField(30);
+		nombreAsignatura.setBounds(350,30,200,25);
 		nombreProfesor = new JTextField(30);
 		nombreProfesor.setBounds(350, 70, 200, 25);
 		
-		String [] colores = {"Seleccione un color", "Rojo", "Azul", "Verde","Amarillo"};
+		String [] colores = {"Seleccione un color", "Rojo", "Azul", "Naranja","Verde","Amarillo","Gris","Cyan","Rosado"};
 		
 		color = new JComboBox(colores);
 		color.setBounds(350, 110, 200, 25);
@@ -102,7 +110,7 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		
 		
 		//Arreglo de prueba
-		String [] horario = {"Seleccione","7AM","9AM","11AM","1PM","3PM","5PM","7PM","9PM"};
+		String [] horario = {"Seleccione","07:00H-09:00H","9:00H-11:00H","11:00H-13:00H","14:00H-16:00H","16:00H-18:00H","18:00H-20:00H","20:00H-22:00H"};
 		
 		menuHorario = new JComboBox (horario);
 		menuHorario.setBounds(350, 150, 200, 25);
@@ -153,6 +161,7 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == aceptar) {
+			obtenerDatosAsignatura();
 			System.out.println("Dio clic a boton submit");
 			validarSeleccion();
 		}
@@ -161,15 +170,87 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 			setVisible(false);
 		}
 		
-		if (e.getSource() == color) {
-			System.out.println("El color elegido fue: "  + color.getSelectedItem());
-			System.out.println("El index del color fue:" + color.getSelectedItem());
-		}
+	}
+
+	private void obtenerDatosAsignatura() {
+		// TODO Auto-generated method stub
+		int fila = 0;
+		int columa = 0;
+//		datosVentanaAsignatura.add(nombreAsignatura.getText());
+		System.out.println("MATERIAS ACTUALES" + datosVentanaAsignatura);
+		arrayMatriz();
 		
-		if (e.getSource() == menuHorario) {
-			System.out.println("El horario elegido fue: " + menuHorario.getSelectedItem());
-			System.out.println("Index: " + menuHorario.getSelectedIndex());
+		if (LUNES.isSelected()) {
+			System.out.println("Fue selecionado el LUNES");
+			columa = 1;
 		}
+		if (MARTES.isSelected()) {
+			System.out.println("Fue selecionado el MARTES");
+			columa = 2;
+		}
+		if (MIERCOLES.isSelected()) {
+			System.out.println("Fue selecionado el MIERCOLES");
+			columa = 3;
+		}
+		if (JUEVES.isSelected()) {
+			System.out.println("Fue selecionado el JUEVES");
+			columa = 4;
+		}
+		if (VIERNES.isSelected()) {
+			System.out.println("Fue selecionado el VIERNES");
+			columa = 5;
+		}
+		if (SABADO.isSelected()) {
+			System.out.println("Fue selecionado el SABADO");
+			columa = 6;
+		}
+		if (menuHorario.getSelectedItem().equals("07:00H-09:00H")) {
+			System.out.println("**/*/*/*/*/*/*/*/*/*/");
+			System.out.println("USTED ELIGIO LAS 7 AM");
+			fila = 0;
+		} else {
+			if (menuHorario.getSelectedItem().equals("9:00H-11:00H")) {
+				System.out.println("Usted eligió las 9 AM");
+				fila = 1;
+			}
+			if (menuHorario.getSelectedItem().equals("11:00H-13:00H")) {
+				System.out.println("Usted eligió las 11 AM");
+				fila = 2;
+			}
+			if (menuHorario.getSelectedItem().equals("14:00H-16:00H")) {
+				System.out.println("Usted eligió la 14:00H-16:00H");
+				fila = 3;
+			}
+			if (menuHorario.getSelectedItem().equals("16:00H-18:00H")) {
+				System.out.println("Usted eligió la 16:00H-18:00H");
+				fila = 4;
+			}
+			if (menuHorario.getSelectedItem().equals("18:00H-20:00H")) {
+				System.out.println("Usted eligió la 18:00H-20:00H");
+				fila = 5;
+			}
+			if (menuHorario.getSelectedItem().equals("20:00H-22:00H")) {
+				System.out.println("Usted eligió la 20:00H-22:00H");
+				fila = 6;
+			}
+		}
+
+		datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
+		System.out.println("!!!!!!!!DATO GUARDADO!!!!!!!!");
+		System.out.println(datosVentanaAsignatura[fila][columa]);
+		RecibidorDatos claseRecibidorDatos = new RecibidorDatos(datosVentanaAsignatura);
+		setVisible(false);
+		
+		
+		
+		System.out.println("El color elegido fue: "  + color.getSelectedItem());
+		System.out.println("El index del color fue:" + color.getSelectedItem());
+		System.out.println("El horario elegido fue: " + menuHorario.getSelectedItem());
+		System.out.println("Index: " + menuHorario.getSelectedIndex());
+	}
+
+	private void arrayMatriz() {
+		
 		
 	}
 
@@ -207,6 +288,15 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		}
 			
 		}
+	
+
+	public JTextField getNombreAsignatura() {
+		return nombreAsignatura;
+	}
+
+	public void setNombreAsignatura(JTextField nombreAsignatura) {
+		this.nombreAsignatura = nombreAsignatura;
+	}
 			
 	}
 
