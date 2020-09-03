@@ -12,12 +12,16 @@ import unbosque.edu.co.vista.Tabla;
 public class RecibidorDatos {
 
 	private String [][] datosTabla;
+	private String [] nombreMaterias;
+	private int contador;
 	/**
 	 * 
 	 */
-	public RecibidorDatos(String [][] datos) {
+	public RecibidorDatos(String [][] datos, String[] nombreAsignatura, int contadorNombre) {
 		datosTabla = datos;
-		Tabla claseTabla = new Tabla(datosTabla);
+		nombreMaterias = nombreAsignatura;
+		contador = contadorNombre;
+		Tabla claseTabla = new Tabla(datosTabla, nombreMaterias, contador);
 	}
 
 }

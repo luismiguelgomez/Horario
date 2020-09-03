@@ -20,11 +20,13 @@ public class Datos {
 		{"18:00H-20:00H", "", "", "", "" , "", " "},
 		{"20:00H-22:00H", "", "", "", "" , "", " "},};
 	
+	private String [] nombreAsginaturas = new String [42];
+	private int contadorNombre = 0;
 	/**
 	 * 
 	 */
 	public Datos() {
-		Tabla ventana1 = new Tabla(datos);
+		Tabla ventana1 = new Tabla(datos, nombreAsginaturas,contadorNombre );
 	}
 
 	

@@ -1,6 +1,5 @@
 package unbosque.edu.co.vista;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -20,9 +19,13 @@ public class Tabla implements ActionListener{
 	
 	JButton botonAgregar;
 	JButton botonBorrar;
+	private String [] nombreAs;
+	private int contadorNombres;
 	
 	
-	public Tabla(String [][] datos) {
+	public Tabla(String [][] datos, String [] nombreAsignaturas, int contadorNombre) {
+		contadorNombres = contadorNombre;
+		nombreAs = nombreAsignaturas;
 		datosTabla = datos;
 		ventana = new JFrame("Tablas");
 		ventana.setLayout(new FlowLayout());
@@ -59,11 +62,11 @@ public class Tabla implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		if (ev.getSource() == botonAgregar) {
-			VentanaAgregarAsignatura ventanaAgregarAsignatura = new VentanaAgregarAsignatura(datosTabla);
+			VentanaAgregarAsignatura ventanaAgregarAsignatura = new VentanaAgregarAsignatura(datosTabla, contadorNombres);
 			ventana.setVisible(false);
 		}
 		if (ev.getSource() == botonBorrar) {
-			VentanaEliminarAsignatura ventanaEliminarAsignatura = new VentanaEliminarAsignatura(datosTabla);
+			VentanaEliminarAsignatura ventanaEliminarAsignatura = new VentanaEliminarAsignatura(datosTabla, nombreAs);
 		}
 		
 	}

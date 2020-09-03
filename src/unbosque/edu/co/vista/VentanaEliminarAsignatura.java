@@ -26,18 +26,21 @@ import javax.swing.JTextArea;
  */
 public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 	
-	private String [] mostrarMaterias;
 	JButton botonCancelar;
 	JButton btnEliminarAsignatura;
 	private JComboBox combo;
 	private JLabel mensaje;
 	String [][] datosVentanaEliminar;
+	String [] nombreAsignaturas;
 	/**
 	 * 
 	 */
-	public VentanaEliminarAsignatura(String [][] datos) {
+	public VentanaEliminarAsignatura(String [][] datos, String[] asignaturas) {
+		nombreAsignaturas = asignaturas;
+		combo = new JComboBox(asignaturas);
+		
 		datosVentanaEliminar = datos;
-		actualizarMaterias();
+//		actualizarMaterias();
 		//Componentes basicos de mi Jframe
 		setSize(600,300);
 		setTitle("Eliminar asignatura");
@@ -50,14 +53,14 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		setVisible(true);
 	}
 	
-	private void actualizarMaterias() {
-		System.out.println("Entre a actualizar Materias");
-		for (int i = 0; i < datosVentanaEliminar.length; i++) {
-			for (int j = 0; j < datosVentanaEliminar.length; j++) {
-				System.out.println(datosVentanaEliminar[i][j]);
-			}
-		}
-	}
+//	private void actualizarMaterias() {
+//		System.out.println("Entre a actualizar Materias");
+//		for (int i = 0; i < datosVentanaEliminar.length; i++) {
+//			for (int j = 0; j < datosVentanaEliminar.length; j++) {
+//				System.out.println(datosVentanaEliminar[i][j]);
+//			}
+//		}
+//	}
 
 	private void iniciarComponentes() {
 		JPanel panel = new JPanel();
@@ -83,12 +86,6 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		this.getContentPane().add(panel);
 	}
 	
-	public void recibeMateria (ArrayList<String> dmaterias) {
-		System.out.println("#################");
-		System.out.println(dmaterias);
-		setMostrarMaterias(mostrarMaterias);
-	}
-	
 	public void actionPerformed(ActionEvent e) {
         if (e.getSource()==botonCancelar) {
         	setVisible(false);
@@ -100,18 +97,8 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
         mensaje = new JLabel();
 		mensaje.setBounds(5, 40, 350, 20);
 		mensaje.setText("Seleccione la asignatura que desea eliminar" );
-		String [] horario = {"Seleccione","7AM","9AM","11AM","1PM","3PM","5PM","7PM","9PM"};
-		combo = new JComboBox(datosVentanaEliminar);
+//		combo = new JComboBox(nombreAsignaturas);
 		combo.setBounds(400, 40, 135, 20);
 	}
-
-	public String[] getMostrarMaterias() {
-		return mostrarMaterias;
-	}
-
-	public void setMostrarMaterias(String[] mostrarMaterias) {
-		this.mostrarMaterias = mostrarMaterias;
-	}
-
 	
 }

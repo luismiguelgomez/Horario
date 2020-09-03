@@ -3,11 +3,9 @@
  */
 package unbosque.edu.co.vista;
 
-import java.awt.Color; 
+import java.awt.Color;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -44,11 +42,16 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	JButton cancelar;
 	String [][] datosVentanaAsignatura;
 	String [] arregloNombreAsignatura;
+	private int fila = 0;
+	private int columa = 0;
+	private int contadorNombres;
 	
 	/**
 	 * 
 	 */
-	public VentanaAgregarAsignatura(String [][] datos) {
+	public VentanaAgregarAsignatura(String [][] datos, int contadorNombre) {
+		contadorNombres = contadorNombre;
+		arregloNombreAsignatura = new String[42];
 		datosVentanaAsignatura = datos;
 		setSize(600,500);
 		setTitle("Agregar color");
@@ -175,8 +178,7 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 
 	private void obtenerDatosAsignatura() {
 		// TODO Auto-generated method stub
-		int fila = 0;
-		int columa = 0;
+		
 //		datosVentanaAsignatura.add(nombreAsignatura.getText());
 		System.out.println("MATERIAS ACTUALES" + datosVentanaAsignatura);
 		
@@ -240,14 +242,13 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 			columa = 6;
 			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
 		}
-		
-		guardarNombres();
-		
 
-		
+		System.out.println("El contador de nombres es:" +contadorNombres);
+		guardarNombres();
 		System.out.println("!!!!!!!!DATO GUARDADO!!!!!!!!");
+		System.out.println("---ARREGLO"+arregloNombreAsignatura [contadorNombres]);
 		System.out.println(datosVentanaAsignatura[fila][columa]);
-		RecibidorDatos claseRecibidorDatos = new RecibidorDatos(datosVentanaAsignatura);
+		RecibidorDatos claseRecibidorDatos = new RecibidorDatos(datosVentanaAsignatura, arregloNombreAsignatura, contadorNombres);
 		setVisible(false);
 		
 		
@@ -259,7 +260,35 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	}
 
 	private void guardarNombres() {
-			
+		if (arregloNombreAsignatura[0] == null) {
+			contadorNombres = contadorNombres + 1;
+		} else {
+			contadorNombres = contadorNombres+1;
+		}
+		
+		if (menuHorario.getSelectedItem().equals("07:00H-09:00H")) {
+			arregloNombreAsignatura [contadorNombres] = nombreAsignatura.getText();
+		} else {
+			if (menuHorario.getSelectedItem().equals("9:00H-11:00H")) {
+				arregloNombreAsignatura [contadorNombres] = nombreAsignatura.getText();
+			}
+			if (menuHorario.getSelectedItem().equals("11:00H-13:00H")) {
+				arregloNombreAsignatura [contadorNombres] = nombreAsignatura.getText();
+			}
+			if (menuHorario.getSelectedItem().equals("14:00H-16:00H")) {
+				arregloNombreAsignatura [contadorNombres] = nombreAsignatura.getText();
+			}
+			if (menuHorario.getSelectedItem().equals("16:00H-18:00H")) {
+				arregloNombreAsignatura [contadorNombres] = nombreAsignatura.getText();
+			}
+			if (menuHorario.getSelectedItem().equals("18:00H-20:00H")) {
+				arregloNombreAsignatura [contadorNombres] = nombreAsignatura.getText();
+			}
+			if (menuHorario.getSelectedItem().equals("20:00H-22:00H")) {
+				arregloNombreAsignatura [contadorNombres] = nombreAsignatura.getText();
+			}
+		}
+		System.out.println("----**contador"+contadorNombres );
 	}
 
 	private void validarSeleccion() {
@@ -295,9 +324,8 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 			nFila = 6;
 		}
 			
-		}
+	}
 	
-
 	public JTextField getNombreAsignatura() {
 		return nombreAsignatura;
 	}
