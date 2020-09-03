@@ -43,6 +43,7 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	JButton aceptar;
 	JButton cancelar;
 	String [][] datosVentanaAsignatura;
+	String [] arregloNombreAsignatura;
 	
 	/**
 	 * 
@@ -178,32 +179,7 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		int columa = 0;
 //		datosVentanaAsignatura.add(nombreAsignatura.getText());
 		System.out.println("MATERIAS ACTUALES" + datosVentanaAsignatura);
-		arrayMatriz();
 		
-		if (LUNES.isSelected()) {
-			System.out.println("Fue selecionado el LUNES");
-			columa = 1;
-		}
-		if (MARTES.isSelected()) {
-			System.out.println("Fue selecionado el MARTES");
-			columa = 2;
-		}
-		if (MIERCOLES.isSelected()) {
-			System.out.println("Fue selecionado el MIERCOLES");
-			columa = 3;
-		}
-		if (JUEVES.isSelected()) {
-			System.out.println("Fue selecionado el JUEVES");
-			columa = 4;
-		}
-		if (VIERNES.isSelected()) {
-			System.out.println("Fue selecionado el VIERNES");
-			columa = 5;
-		}
-		if (SABADO.isSelected()) {
-			System.out.println("Fue selecionado el SABADO");
-			columa = 6;
-		}
 		if (menuHorario.getSelectedItem().equals("07:00H-09:00H")) {
 			System.out.println("**/*/*/*/*/*/*/*/*/*/");
 			System.out.println("USTED ELIGIO LAS 7 AM");
@@ -234,8 +210,41 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 				fila = 6;
 			}
 		}
+		if (LUNES.isSelected()) {
+			System.out.println("Fue selecionado el LUNES");
+			columa = 1;
+			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
+		}
+		if (MARTES.isSelected()) {
+			System.out.println("Fue selecionado el MARTES");
+			columa = 2;
+			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
+		}
+		if (MIERCOLES.isSelected()) {
+			System.out.println("Fue selecionado el MIERCOLES");
+			columa = 3;
+			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
+		}
+		if (JUEVES.isSelected()) {
+			System.out.println("Fue selecionado el JUEVES");
+			columa = 4;
+			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
+		}
+		if (VIERNES.isSelected()) {
+			System.out.println("Fue selecionado el VIERNES");
+			columa = 5;
+			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
+		}
+		if (SABADO.isSelected()) {
+			System.out.println("Fue selecionado el SABADO");
+			columa = 6;
+			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
+		}
+		
+		guardarNombres();
+		
 
-		datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
+		
 		System.out.println("!!!!!!!!DATO GUARDADO!!!!!!!!");
 		System.out.println(datosVentanaAsignatura[fila][columa]);
 		RecibidorDatos claseRecibidorDatos = new RecibidorDatos(datosVentanaAsignatura);
@@ -249,9 +258,8 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		System.out.println("Index: " + menuHorario.getSelectedIndex());
 	}
 
-	private void arrayMatriz() {
-		
-		
+	private void guardarNombres() {
+			
 	}
 
 	private void validarSeleccion() {

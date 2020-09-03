@@ -56,10 +56,6 @@ public class Tabla implements ActionListener{
 		botonBorrar.addActionListener(this);
 	}
 	
-	private void pintarColor(String [][] lugarPintar) {
-		
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		if (ev.getSource() == botonAgregar) {
@@ -67,7 +63,7 @@ public class Tabla implements ActionListener{
 			ventana.setVisible(false);
 		}
 		if (ev.getSource() == botonBorrar) {
-			VentanaEliminarAsignatura ventanaEliminarAsignatura = new VentanaEliminarAsignatura();
+			VentanaEliminarAsignatura ventanaEliminarAsignatura = new VentanaEliminarAsignatura(datosTabla);
 		}
 		
 	}
