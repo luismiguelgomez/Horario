@@ -166,7 +166,6 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getSource() == aceptar) {
 			obtenerDatosAsignatura();
-			System.out.println("Dio clic a boton submit");
 			validarSeleccion();
 		}
 		
@@ -181,83 +180,57 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		
 //		datosVentanaAsignatura.add(nombreAsignatura.getText());
-		System.out.println("MATERIAS ACTUALES" + datosVentanaAsignatura);
-		
 		if (menuHorario.getSelectedItem().equals("07:00H-09:00H")) {
-			System.out.println("**/*/*/*/*/*/*/*/*/*/");
-			System.out.println("USTED ELIGIO LAS 7 AM");
 			fila = 0;
 		} else {
 			if (menuHorario.getSelectedItem().equals("9:00H-11:00H")) {
-				System.out.println("Usted eligió las 9 AM");
 				fila = 1;
 			}
 			if (menuHorario.getSelectedItem().equals("11:00H-13:00H")) {
-				System.out.println("Usted eligió las 11 AM");
 				fila = 2;
 			}
 			if (menuHorario.getSelectedItem().equals("14:00H-16:00H")) {
-				System.out.println("Usted eligió la 14:00H-16:00H");
 				fila = 3;
 			}
 			if (menuHorario.getSelectedItem().equals("16:00H-18:00H")) {
-				System.out.println("Usted eligió la 16:00H-18:00H");
 				fila = 4;
 			}
 			if (menuHorario.getSelectedItem().equals("18:00H-20:00H")) {
-				System.out.println("Usted eligió la 18:00H-20:00H");
 				fila = 5;
 			}
 			if (menuHorario.getSelectedItem().equals("20:00H-22:00H")) {
-				System.out.println("Usted eligió la 20:00H-22:00H");
 				fila = 6;
 			}
 		}
 		if (LUNES.isSelected()) {
-			System.out.println("Fue selecionado el LUNES");
 			columa = 1;
 			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
 		}
 		if (MARTES.isSelected()) {
-			System.out.println("Fue selecionado el MARTES");
 			columa = 2;
 			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
 		}
 		if (MIERCOLES.isSelected()) {
-			System.out.println("Fue selecionado el MIERCOLES");
 			columa = 3;
 			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
 		}
 		if (JUEVES.isSelected()) {
-			System.out.println("Fue selecionado el JUEVES");
 			columa = 4;
 			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
 		}
 		if (VIERNES.isSelected()) {
-			System.out.println("Fue selecionado el VIERNES");
 			columa = 5;
 			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
 		}
 		if (SABADO.isSelected()) {
-			System.out.println("Fue selecionado el SABADO");
 			columa = 6;
 			datosVentanaAsignatura[fila][columa] = nombreAsignatura.getText();
 		}
 
-		System.out.println("El contador de nombres es:" +contadorNombres);
 		guardarNombres();
-		System.out.println("!!!!!!!!DATO GUARDADO!!!!!!!!");
-		System.out.println("---ARREGLO"+arregloNombreAsignatura [contadorNombres]);
-		System.out.println(datosVentanaAsignatura[fila][columa]);
 		RecibidorDatos claseRecibidorDatos = new RecibidorDatos(datosVentanaAsignatura, arregloNombreAsignatura, contadorNombres);
 		setVisible(false);
 		
-		
-		
-		System.out.println("El color elegido fue: "  + color.getSelectedItem());
-		System.out.println("El index del color fue:" + color.getSelectedItem());
-		System.out.println("El horario elegido fue: " + menuHorario.getSelectedItem());
-		System.out.println("Index: " + menuHorario.getSelectedIndex());
 	}
 
 	private void guardarNombres() {
@@ -289,39 +262,31 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 				arregloNombreAsignatura [contadorNombres] = nombreAsignatura.getText();
 			}
 		}
-		System.out.println("----**contador"+contadorNombres );
 	}
 
 	private void validarSeleccion() {
 		// TODO Auto-generated method stub
-		System.out.println("Entro a validar session");
 		int nFila = 0;
 		String seleccion = "";
 		
 		if (LUNES.isSelected()) {
 			seleccion += "Lunes seleccionado";
-			System.out.println("LUNES");
 			nFila = 1;
 		} 
 		if (MARTES.isSelected()) {
 			seleccion += "Martes seleccionado";
-			System.out.println("MARTES");
 			nFila = 2;
 		} if (MIERCOLES.isSelected()) {
 			seleccion += "Miercoles seleccionado";
-			System.out.println("MIERCOLES");
 			nFila = 3;
 		} if (JUEVES.isSelected()) {
 			seleccion += "Miercoles seleccionado";
-			System.out.println("JUEVES");
 			nFila = 4;
 		} if (VIERNES.isSelected()) {
 			seleccion += "Miercoles seleccionado";
-			System.out.println("Viernes");
 			nFila = 5;
 		} if (SABADO.isSelected()) {
 			seleccion += "Miercoles seleccionado";
-			System.out.println("Sabado");
 			nFila = 6;
 		}
 			

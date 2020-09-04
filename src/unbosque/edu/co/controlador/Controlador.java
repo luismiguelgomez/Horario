@@ -16,8 +16,5 @@ public class Controlador {
 
 	public Controlador() {
 		Datos claseDatos = new Datos();
-//		Tabla ventana1 = new Tabla();
-//		VentanaEliminarAsignatura ventana2 = new VentanaEliminarAsignatura();
-//		VentanaAgregarAsignatura ventana3 = new VentanaAgregarAsignatura();
 	}
 }

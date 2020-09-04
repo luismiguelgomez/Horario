@@ -56,8 +56,6 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 	}
 	
 	private void eliminarAsignarura() {
-		System.out.println("88888888888888888888888");
-		System.out.println("Entre al metodo eliminarAsignarura");
 		Object eliminarDato = "";
 		if (combo.getSelectedItem() != null) {
 			eliminarDato = combo.getSelectedItem();
@@ -115,7 +113,6 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
     }
 	
 	private void menuEliminacion () {
-		System.out.println("---"+ " MATERIAS SON:" );
         mensaje = new JLabel();
 		mensaje.setBounds(5, 40, 350, 20);
 		mensaje.setText("Seleccione la asignatura que desea eliminar" );
