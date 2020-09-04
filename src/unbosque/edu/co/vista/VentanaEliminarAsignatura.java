@@ -30,16 +30,18 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 	JButton btnEliminarAsignatura;
 	private JComboBox combo;
 	private JLabel mensaje;
-	String [][] datosVentanaEliminar;
-	String [] nombreAsignaturas;
+	private String [][] datosVentanaEliminar;
+	private String [] nombreAsignaturas;
+	private int contadorNombre;
 	/**
 	 * 
 	 */
-	public VentanaEliminarAsignatura(String [][] datos, String[] asignaturas) {
-		nombreAsignaturas = asignaturas;
+	public VentanaEliminarAsignatura(String [][] datos, String[] asignaturas, int pcontadorNombre) {
+		asignaturas[0] = "Asignaturas a eliminar:";
 		combo = new JComboBox(asignaturas);
-		
+		nombreAsignaturas = asignaturas;
 		datosVentanaEliminar = datos;
+		contadorNombre = pcontadorNombre;
 //		actualizarMaterias();
 		//Componentes basicos de mi Jframe
 		setSize(600,300);
@@ -53,14 +55,26 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		setVisible(true);
 	}
 	
-//	private void actualizarMaterias() {
-//		System.out.println("Entre a actualizar Materias");
-//		for (int i = 0; i < datosVentanaEliminar.length; i++) {
-//			for (int j = 0; j < datosVentanaEliminar.length; j++) {
-//				System.out.println(datosVentanaEliminar[i][j]);
-//			}
-//		}
-//	}
+	private void eliminarAsignarura() {
+		System.out.println("88888888888888888888888");
+		System.out.println("Entre al metodo eliminarAsignarura");
+		Object eliminarDato = "";
+		if (combo.getSelectedItem() != null) {
+			eliminarDato = combo.getSelectedItem();
+		}
+		
+		for (int i = 0; i < datosVentanaEliminar.length; i++) {
+			for (int j = 0; j < datosVentanaEliminar.length; j++) {
+				if (datosVentanaEliminar[i][j].equals(eliminarDato)) {
+					datosVentanaEliminar[i][j] = "";
+				}
+			}
+		}
+		
+		nombreAsignaturas[contadorNombre] = "";
+		contadorNombre = contadorNombre - 1;
+		
+	}
 
 	private void iniciarComponentes() {
 		JPanel panel = new JPanel();
@@ -74,6 +88,7 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		btnEliminarAsignatura = new JButton("Eliminar asignatura");
 		btnEliminarAsignatura.setBounds(100,150,70,70);
 		btnEliminarAsignatura.setSize(150,100);
+		btnEliminarAsignatura.addActionListener(this);
 		add(btnEliminarAsignatura);
 		
 		
@@ -89,7 +104,14 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
         if (e.getSource()==botonCancelar) {
         	setVisible(false);
+        	Tabla claseTabla = new Tabla(datosVentanaEliminar, nombreAsignaturas, contadorNombre);
         }
+        
+        if (e.getSource()==btnEliminarAsignatura) {
+        	eliminarAsignarura();
+        	setVisible(false);
+        	Tabla claseTabla = new Tabla(datosVentanaEliminar, nombreAsignaturas, contadorNombre);
+		}
     }
 	
 	private void menuEliminacion () {
@@ -98,7 +120,7 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		mensaje.setBounds(5, 40, 350, 20);
 		mensaje.setText("Seleccione la asignatura que desea eliminar" );
 //		combo = new JComboBox(nombreAsignaturas);
-		combo.setBounds(400, 40, 135, 20);
+		combo.setBounds(380, 40, 160, 20);
 	}
 	
 }

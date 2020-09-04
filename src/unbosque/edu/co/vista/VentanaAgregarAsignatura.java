@@ -3,7 +3,7 @@
  */
 package unbosque.edu.co.vista;
 
-import java.awt.Color;  
+import java.awt.Color;   
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -49,9 +49,9 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	public VentanaAgregarAsignatura(String [][] datos, int contadorNombre) {
+	public VentanaAgregarAsignatura(String [][] datos, int contadorNombre, String [] pnombreAsignatura) {
+		arregloNombreAsignatura = pnombreAsignatura;
 		contadorNombres = contadorNombre;
-		arregloNombreAsignatura = new String[42];
 		datosVentanaAsignatura = datos;
 		setSize(600,500);
 		setTitle("Agregar color");
@@ -172,6 +172,7 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		
 		if (e.getSource() == cancelar) {
 			setVisible(false);
+			Tabla claseTabla = new Tabla(datosVentanaAsignatura,arregloNombreAsignatura,contadorNombres);
 		}
 		
 	}

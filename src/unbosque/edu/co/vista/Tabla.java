@@ -62,15 +62,14 @@ public class Tabla implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		if (ev.getSource() == botonAgregar) {
-			VentanaAgregarAsignatura ventanaAgregarAsignatura = new VentanaAgregarAsignatura(datosTabla, contadorNombres);
+			VentanaAgregarAsignatura ventanaAgregarAsignatura = new VentanaAgregarAsignatura(datosTabla, contadorNombres, nombreAs);
 			ventana.setVisible(false);
 		}
 		if (ev.getSource() == botonBorrar) {
-			VentanaEliminarAsignatura ventanaEliminarAsignatura = new VentanaEliminarAsignatura(datosTabla, nombreAs);
+			VentanaEliminarAsignatura ventanaEliminarAsignatura = new VentanaEliminarAsignatura(datosTabla, nombreAs, contadorNombres);
+			ventana.setVisible(false);
 		}
 		
 	}
-	
-	
 
 }
