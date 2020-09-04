@@ -33,8 +33,11 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 	private String [][] datosVentanaEliminar;
 	private String [] nombreAsignaturas;
 	private int contadorNombre;
+	
 	/**
-	 * 
+	 * @param datos matriz utilizada para pintar datos de la clase Table
+	 * @param asignaturas String[] de nombres de la materia
+	 * @param pcontadorNombre entero para ir contando nombres y asi guardarlos con orden
 	 */
 	public VentanaEliminarAsignatura(String [][] datos, String[] asignaturas, int pcontadorNombre) {
 		asignaturas[0] = "Asignaturas a eliminar:";
