@@ -15,7 +15,7 @@ import unbosque.edu.co.vista.VentanaEliminarAsignatura;
 public class Controlador {
 
 	/**
-	 * Constructor de controlador, que crea un objeto de Datos 
+	 * <h1>Constructor de controlador, que crea un objeto de Datos</h1> 
 	 */
 	public Controlador() {
 		Datos claseDatos = new Datos();

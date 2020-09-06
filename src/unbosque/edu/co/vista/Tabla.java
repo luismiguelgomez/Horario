@@ -27,8 +27,8 @@ public class Tabla implements ActionListener{
 	
 	/**
 	 * <h1>Constructor de la clase Tabla</h1>
-	 * <pre> Tres parametros, entre los que estan una matriz, una matriz unidimensional y un contador
-	 * <post> Entregar una tabla con datos provenientes de otras clases, como la clase encargada de eliminar y agregar asignatura
+	 * <pre> Tres parametros, entre los que estan una matriz, una matriz unidimensional y un contador</pre>
+	 * <post> Entregar una tabla con datos provenientes de otras clases, como la clase encargada de eliminar y agregar asignatura</post>
 	 * @param datos matriz que contiene el horario de los datos que utilizare
 	 * @param nombreAsignaturas Contendra los nombres de las asignaturas
 	 * @param contadorNombre contará cada asignatura nueva que voy a crear, para crear los datos en orden

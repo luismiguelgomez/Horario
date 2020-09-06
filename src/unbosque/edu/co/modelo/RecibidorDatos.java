@@ -14,8 +14,9 @@ public class RecibidorDatos {
 	private String [][] datosTabla;
 	private String [] nombreMaterias;
 	private int contador;
+	
 	/**
-	 * 
+	 * <h1>Clase intermediara entre las ventanas de eliminar y agregar y la clase Tabla</h1>
 	 */
 	public RecibidorDatos(String [][] datos, String[] nombreAsignatura, int contadorNombre) {
 		datosTabla = datos;
