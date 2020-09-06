@@ -14,6 +14,9 @@ public class Tabla implements ActionListener{
 
 	public JFrame ventana;
 	private JTable tabla;
+	/**
+	 * Fila de los datos que se utilizara para la cabecera de la Tabla
+	 */
 	private String [] cabecera = {"", "LUNES", "MARTES", "MIERCOLES", "JUEVES" , "VIERNES", "SABADO"};
 	private String [][] datosTabla;
 	
@@ -22,7 +25,14 @@ public class Tabla implements ActionListener{
 	private String [] nombreAs;
 	private int contadorNombres;
 	
-	
+	/**
+	 * <h1>Constructor de la clase Tabla</h1>
+	 * <pre> Tres parametros, entre los que estan una matriz, una matriz unidimensional y un contador</pre>
+	 * <post> Entregar una tabla con datos provenientes de otras clases, como la clase encargada de eliminar y agregar asignatura</post>
+	 * @param datos matriz que contiene el horario de los datos que utilizare
+	 * @param nombreAsignaturas Contendra los nombres de las asignaturas
+	 * @param contadorNombre contará cada asignatura nueva que voy a crear, para crear los datos en orden
+	 */
 	public Tabla(String [][] datos, String [] nombreAsignaturas, int contadorNombre) {
 		contadorNombres = contadorNombre;
 		nombreAs = nombreAsignaturas;
@@ -39,6 +49,9 @@ public class Tabla implements ActionListener{
 		ventana.setVisible(true);
 	}
 	
+	 /**
+	  * Si existen nombres muy largos o se llega a dañar el tamaño predeterminado de la ventana, se crea un scroll
+	  */
 	public void set_Tabla() {
 		tabla = new JTable(datosTabla, cabecera);
 		JScrollPane JS = new JScrollPane(tabla);
@@ -46,6 +59,11 @@ public class Tabla implements ActionListener{
 		ventana.add(JS);
 	}
 	
+	/**
+	 * Crea los botones de Agregar y Cancelar 
+	 * <pre> Tener creado un JButton botonAgregar y JButton botonBorrar</pre>
+	 * <post> Crear botones de eliminar y cancelar </post>
+	 */
 	private void botonsAceptarCancelar() {
 		
 		//Boton agregar asignatura
@@ -59,6 +77,11 @@ public class Tabla implements ActionListener{
 		botonBorrar.addActionListener(this);
 	}
 	
+	/**
+	 * <h1>Funcionalidad de los botones Agregar Asignatura y Borrar Asignatura</h1>
+	 * <pre> Tener dos botones : 1. botonAgregar, 2.botonBorrar<br></pre>
+	 * <post> Eentregar objetos de VentanaAgregarAsignatura y  VentanaEliminarAsignatura</post>
+	 */
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		if (ev.getSource() == botonAgregar) {

@@ -3,22 +3,16 @@
  */
 package unbosque.edu.co.vista;
 
-import java.awt.BorderLayout; 
+import java.awt.BorderLayout;  
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.font.TextLayout;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 /**
  * @author gomez
@@ -33,8 +27,20 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 	private String [][] datosVentanaEliminar;
 	private String [] nombreAsignaturas;
 	private int contadorNombre;
+	
 	/**
-	 * 
+	 * <h1>Método constructor de VentanaEliminarAsignatura</h1>
+	 * <pre>necesita tres parametros:<br>
+	 * 1. String [][]<br>
+	 * 2. String[] <br>
+	 * 3. int 
+	 * </pre>
+	 * <post>
+	 * Mostrar una ventana con un JComboBox que permite eliminar las asignaturas por su nombre
+	 * </post>
+	 * @param datos matriz utilizada para pintar datos de la clase Table
+	 * @param asignaturas String[] de nombres de la materia
+	 * @param pcontadorNombre entero para ir contando nombres y asi guardarlos con orden
 	 */
 	public VentanaEliminarAsignatura(String [][] datos, String[] asignaturas, int pcontadorNombre) {
 		asignaturas[0] = "Asignaturas a eliminar:";
@@ -55,6 +61,19 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		setVisible(true);
 	}
 	
+	/**
+	 * <h1>Busca los datos de la matriz y los elimina</h1>
+	 * <pre> Matriz de datosVentanaEliminar y 
+	 * seleccionar en el JComboBox </pre>
+	 * <post>
+	 * 1. Eliminar en la matriz datosVentanaEliminar la asignatura selecionada en el JComboBox
+	 * 2. Eliminar a nombreAsignaturas el valor de la asignatura
+	 * 3. contador nombre restarte una unidad
+	 * 
+	 * <h3>Para que asi en la tabla se elimine el nombre de la asignatura
+	 * y en VentanaEliminarAsignatura no aparezca el el JCombobox el nombre de la materia eliminado
+	 * </h3>
+	 */
 	private void eliminarAsignarura() {
 		Object eliminarDato = "";
 		if (combo.getSelectedItem() != null) {
@@ -71,9 +90,12 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		
 		nombreAsignaturas[contadorNombre] = "";
 		contadorNombre = contadorNombre - 1;
-		
 	}
 
+	/**
+	 * <pre>LLlamar este metodo desde el constructor</pre>
+	 * <post>Inicia el panel, agrega el boton cancelar, agrega el boton eliminar asginatura</post>
+	 */
 	private void iniciarComponentes() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -98,7 +120,13 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		
 		this.getContentPane().add(panel);
 	}
-	
+
+	/**
+	 * Acciones del botonCancelar y acciones del btnEliminarAsignatura
+	 * <pre>Estar creado el botonCancelar, estar creado el btnEliminarAsignatura y 
+	 * tener los parametros de la clase Tabla </pre>
+	 * <post>Tener acciones para los botones </post>
+	 */
 	public void actionPerformed(ActionEvent e) {
         if (e.getSource()==botonCancelar) {
         	setVisible(false);
@@ -112,6 +140,9 @@ public class VentanaEliminarAsignatura extends JFrame implements ActionListener{
 		}
     }
 	
+	/**
+	 * Contiene el JLabel que hace referencia a la instrución de la materia que se desea eliminar
+	 */
 	private void menuEliminacion () {
         mensaje = new JLabel();
 		mensaje.setBounds(5, 40, 350, 20);

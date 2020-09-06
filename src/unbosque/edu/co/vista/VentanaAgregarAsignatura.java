@@ -47,7 +47,15 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 	private int contadorNombres;
 	
 	/**
-	 * 
+	 * <h1>Metodo constructor de VentanaAgregarAsignatura</h1>
+	 * <pre> Necesita 3 parametros, 1. Matriz de datos, 2. Entero contador para nombres, 3.Nombres de las asignaturas</pre>
+	 * <post> Guarda datos de la matriz para despues pintarlos en la Tabla, 
+	 * va sumando los valores de contador nombre, comenzando por 1,
+	 * Guarda los valores del nombre de la asignatura para despues tener los daots y utilizarlos en el JcomboBox de EliminarAsignatura
+	 * </post>   
+	 * @param datos Matriz que contiene los datos de la asignatura
+	 * @param contadorNombre entero que tiene el numero de los nombres y asi ayuda a crear los datos de una manera organizada
+	 * @param pnombreAsignatura Contiene los nombres de la asignatura
 	 */
 	public VentanaAgregarAsignatura(String [][] datos, int contadorNombre, String [] pnombreAsignatura) {
 		arregloNombreAsignatura = pnombreAsignatura;
@@ -84,6 +92,22 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		paintComponents(getGraphics());
 	}
 	
+	/**
+	 * Inicializa y crea componentes
+	 * <pre> Ser llamado desde el Metodo constructor de VentanaAgregarAsignatura</pre>
+	 * <post> Crea los componentes de:<br>
+	 * 1. Nombre de la asignatura<br>
+	 * 2. Nombre del profesor<br>
+	 * 3. Asignar color<br>
+	 * 4. Elegir horario<br>
+	 * 5. Crea un String[] de los colores disponibles<br>
+	 * 6. Crear un JTextFiel para guardar el nombre de la asignatura<br>
+	 * 7. JComboBox de los colores<br>
+	 * 8. Casillas checkbox de dias, comenzando desde el Lunes hasta el sabado 
+	 * 9. Crea boton de cancelar
+	 * 10. Crea boton de Aceptar
+	 * </post>
+	 */
 	private void inicializarComponentes () {
 		
 		
@@ -156,11 +180,13 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		aceptar.setText("Aceptar");
 		aceptar.setBounds(90, 350, 200, 100);
 		aceptar.addActionListener(this);
-		
-		
-		
 	}
 
+	/**
+	 * <h1>Funcionalidades de aceptar y cancelar en esta clase</h1>
+	 * <pre> Necesita que exista el boton de aceptar y el boton de cancelar</pre>
+	 * <post> Funcionalidad de los botones de aceptar y cancelar</post>
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -176,8 +202,17 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		
 	}
 
+	/**
+	 * Revisa en donde se necesita poner el dato en la tabla, y actualiza la informacion en dos arreglos
+	 * <pre>
+	 * 1.Necesita que este creado el JComboBox de menuHorario<br>
+	 * 2. Necesita que este creado el JCheckBox desde Lunes a Sabado<br>
+	 * </pre>
+	 * <post>Obtiene Fila y columna en donde se necesita crear los datos y los agrega a: datosVentanaAsignatura,<br>
+	 * Envia al metodo guardarNombres en va aguardar los nombres en orden para poder eliminarlos despues
+	 * </post>
+	 */
 	private void obtenerDatosAsignatura() {
-		// TODO Auto-generated method stub
 		
 //		datosVentanaAsignatura.add(nombreAsignatura.getText());
 		if (menuHorario.getSelectedItem().equals("07:00H-09:00H")) {
@@ -233,6 +268,16 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		
 	}
 
+	/**
+	 * <h1>Guarda los nombres de las materias en arregloNombreAsignatura, para despues poderlas eliminar</h1>
+	 * <pre> 
+	 * 1. Estar creado el arreglo arregloNombreAsignatura<br>
+	 * 2. Un entero de contadorNombres <br>
+	 * 3. JComboBox del menuHorario <br>
+	 * 4. Tener un JTextField de nombreAsignatura<br>
+	 * </pre>
+	 * <post> Guardar en arregloNombreAsignatura, los nombres creados, para despues poder eliminarlos</post>
+	 */
 	private void guardarNombres() {
 		if (arregloNombreAsignatura[0] == null) {
 			contadorNombres = contadorNombres + 1;
@@ -264,6 +309,9 @@ public class VentanaAgregarAsignatura extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * <h1> Valida la seccion de Jcheck </h1>
+	 */
 	private void validarSeleccion() {
 		// TODO Auto-generated method stub
 		int nFila = 0;
