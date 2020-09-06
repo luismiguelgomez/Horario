@@ -3,10 +3,7 @@
  */
 package unbosque.edu.co.controlador;
 
-import unbosque.edu.co.modelo.Datos;
-import unbosque.edu.co.vista.Tabla;
-import unbosque.edu.co.vista.VentanaAgregarAsignatura;
-import unbosque.edu.co.vista.VentanaEliminarAsignatura;
+import unbosque.edu.co.modelo.Datos; 
 
 /**
  * @author gomez
