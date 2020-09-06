@@ -38,9 +38,9 @@ public class Datos {
 	 * 2. Necesita una matriz unidimensional tipo String para tener las asignaturas disponibles a eliminar<br>
 	 * 3. necesita un entero inicializado en cero que se utiliza para contar las asignaturas disponibles a eliminar<br>
 	 * </pre>
-	 * <post> 
+	 * <h2>Pos-Condiciones 
 	 * Entregar un objeto de Tabla que me pintara una tabla vacia que será llenada de información.
-	 * </post>
+	 * </h2>
 	 */
 	public Datos() {
 		Tabla ventana1 = new Tabla(datos, nombreAsginaturas,contadorNombre );

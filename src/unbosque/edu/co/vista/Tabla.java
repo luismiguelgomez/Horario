@@ -28,7 +28,7 @@ public class Tabla implements ActionListener{
 	/**
 	 * <h1>Constructor de la clase Tabla</h1>
 	 * <pre> Tres parametros, entre los que estan una matriz, una matriz unidimensional y un contador</pre>
-	 * <post> Entregar una tabla con datos provenientes de otras clases, como la clase encargada de eliminar y agregar asignatura</post>
+	 * <h2>Post-Condiciones: Entregar una tabla con datos provenientes de otras clases, como la clase encargada de eliminar y agregar asignatura</h2>
 	 * @param datos matriz que contiene el horario de los datos que utilizare
 	 * @param nombreAsignaturas Contendra los nombres de las asignaturas
 	 * @param contadorNombre contará cada asignatura nueva que voy a crear, para crear los datos en orden
@@ -80,7 +80,7 @@ public class Tabla implements ActionListener{
 	/**
 	 * <h1>Funcionalidad de los botones Agregar Asignatura y Borrar Asignatura</h1>
 	 * <pre> Tener dos botones : 1. botonAgregar, 2.botonBorrar<br></pre>
-	 * <post> Eentregar objetos de VentanaAgregarAsignatura y  VentanaEliminarAsignatura</post>
+	 * <h2>Post condiciones : Entregar objetos de VentanaAgregarAsignatura y  VentanaEliminarAsignatura</h2>
 	 */
 	@Override
 	public void actionPerformed(ActionEvent ev) {
